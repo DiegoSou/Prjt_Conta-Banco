@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contas</title>
+</head>
+<body>
+    <h1>Controle de Conta</h1>
+
+    <form action="main.php" method="post" id="form">
+        <label for="idAgencia">Agência: </label>
+        <input type="text" name="idAgencia" id="idAgencia">
+        <br/>
+        <label for="idConta">Conta: </label>
+        <input type="text" name="idConta" id="idConta">
+        <br/>
+        <label for="saldo">Saldo: </label>
+        <input type="number" step=".01" name="saldo" id="saldo">
+        <br/>
+        <label for="tipoConta">Tipo da Conta: </label>
+        <input type="text" name="tipoConta" id="tipoConta">
+        <br/>
+        <input type="submit" value="Enviar Dados da Conta">
+    </form>
+
+
+    <script>
+        document.getElementById("form").onsubmit = function(e){
+            if(document.getElementById("idConta").value == "" || document.getElementById("idAgencia").value == "" || document.getElementById("saldo").value == "" || document.getElementById("tipoConta").value != "Corrente" && document.getElementById("tipoConta").value != "Poupança"){
+                alert("Os dados devem ser todos preenchidos corretamente.");
+                e.preventDefault();
+            }
+        }
+    </script>
+</body>
+</html>
