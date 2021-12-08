@@ -1,25 +1,32 @@
 <?php
-require_once '../entities/Corrente.php';
-require_once '../entities/Poupanca.php';
+    session_start();
 
-$idAgencia = isset($_POST['idAgencia']) ? $_POST['idAgencia'] : null;
-$idConta = isset($_POST['idConta']) ? $_POST['idConta'] : null;
-$saldo = isset($_POST['saldo']) ? $_POST['saldo'] : null;
-$tipoConta = isset($_POST['tipoConta']) ? $_POST['tipoConta'] : null;
+    if(isset($_SESSION['signIn']) && $_SESSION['signIn'] == true) :
 
-if($tipoConta == "Corrente"){
-    $limite = 500.00;
-    $c1 = new Corrente($idAgencia, $idConta, $saldo, $limite);
-}else{
-    $c1 = new Poupanca($idAgencia, $idConta, $saldo);
-}
+        require_once '../entities/Corrente.php';
+        require_once '../entities/Poupanca.php';
+        
+        $idAgencia = isset($_POST['idAgencia']) ? $_POST['idAgencia'] : null;
+        $idConta = isset($_POST['idConta']) ? $_POST['idConta'] : null;
+        $saldo = isset($_POST['saldo']) ? $_POST['saldo'] : null;
+        $tipoConta = isset($_POST['tipoConta']) ? $_POST['tipoConta'] : null;
+        
+        if($tipoConta == "Corrente"){
+            $limite = 500.00;
+            $c1 = new Corrente($idAgencia, $idConta, $saldo, $limite);
+        }else{
+            $c1 = new Poupanca($idAgencia, $idConta, $saldo);
+        }
+        
+        echo $idAgencia;
+        echo $c1->getDetalhes();
+        echo $tipoConta."<br/>";
+        
+        $c1->saque(400);
+    
 
-
-echo $c1->getDetalhes();
-echo $tipoConta."<br/>";
-
-$c1->saque(400);
-// $c1->depositar(5000.20);
-// $c1->saque(9000)
+    else :  
+        header('Location: signIn.php');
+    endif;
 ?>
 
