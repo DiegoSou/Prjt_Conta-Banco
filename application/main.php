@@ -8,7 +8,7 @@ $saldo = isset($_POST['saldo']) ? $_POST['saldo'] : null;
 $tipoConta = isset($_POST['tipoConta']) ? $_POST['tipoConta'] : null;
 
 if($tipoConta == "Corrente"){
-    $limite = 450.20;
+    $limite = 500.00;
     $c1 = new Corrente($idAgencia, $idConta, $saldo, $limite);
 }else{
     $c1 = new Poupanca($idAgencia, $idConta, $saldo);

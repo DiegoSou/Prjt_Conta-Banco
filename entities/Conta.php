@@ -14,7 +14,7 @@ abstract class Conta{
         return "Agencia: {$this->agencia} " 
                 . "<br/>"
                 . "Conta {$this->conta} | " 
-                . "Saldo {$this->saldo} | "
+                . "Saldo " . number_format($this->saldo, 2, '.', '')
                 . "<br/> <br/>";
     }
 

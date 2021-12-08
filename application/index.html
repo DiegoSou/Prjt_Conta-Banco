@@ -12,23 +12,28 @@
     <form action="main.php" method="post" id="form">
         <label for="idAgencia">Agência: </label>
         <input type="text" name="idAgencia" id="idAgencia">
-        <br/>
+        <br>
         <label for="idConta">Conta: </label>
         <input type="text" name="idConta" id="idConta">
-        <br/>
+        <br>
         <label for="saldo">Saldo: </label>
         <input type="number" step=".01" name="saldo" id="saldo">
-        <br/>
-        <label for="tipoConta">Tipo da Conta: </label>
-        <input type="text" name="tipoConta" id="tipoConta">
-        <br/>
+        <br>
+
+        <label for="tipoConta">Tipo da Conta</label>
+        <select name="tipoConta" id="tipoConta">
+            <option value="Corrente" selected>Corrente</option>
+            <option value="Poupança">Poupança</option>
+        </select>
+        <br>
+
         <input type="submit" value="Enviar Dados da Conta">
     </form>
 
 
     <script>
         document.getElementById("form").onsubmit = function(e){
-            if(document.getElementById("idConta").value == "" || document.getElementById("idAgencia").value == "" || document.getElementById("saldo").value == "" || document.getElementById("tipoConta").value != "Corrente" && document.getElementById("tipoConta").value != "Poupança"){
+            if(document.getElementById("idAgencia").value == "" || document.getElementById("idConta").value == "" ||  document.getElementById("saldo").value == ""){
                 alert("Os dados devem ser todos preenchidos corretamente.");
                 e.preventDefault();
             }
