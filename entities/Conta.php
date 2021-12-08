@@ -22,4 +22,9 @@ abstract class Conta{
         $this->saldo += $valor;
         echo "Depósito de: {$valor} | Saldo atual {$this->saldo} <br/>";
     }
+
+    public function saque($valor){
+        $this->saldo -= $valor;
+        echo "Saque de {$valor} reais. | Saldo atual: {$this->saldo} <br/>";
+    }
 }

@@ -1,6 +1,6 @@
 <?php
-require_once 'Corrente.php';
-require_once 'Poupanca.php';
+require_once '../entities/Corrente.php';
+require_once '../entities/Poupanca.php';
 
 $idAgencia = isset($_POST['idAgencia']) ? $_POST['idAgencia'] : null;
 $idConta = isset($_POST['idConta']) ? $_POST['idConta'] : null;
@@ -16,7 +16,9 @@ if($tipoConta == "Corrente"){
 
 
 echo $c1->getDetalhes();
-// $c1->saque(300);
+echo $tipoConta."<br/>";
+
+$c1->saque(400);
 // $c1->depositar(5000.20);
 // $c1->saque(9000)
 ?>

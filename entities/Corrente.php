@@ -10,12 +10,17 @@ final class Corrente extends Conta{
     }
 
     public function saque($valor){
+        
         if($this->saldo + $this->limite >= $valor) :
-            $this->saldo -= $valor;
-            echo "Saque de {$valor} | Saldo atual {$this->saldo} <br/>";
+            parent::saque($valor);
         else :
-            echo "Saque não autorizado | Saldo atual: {$this->saldo} | Limite: {$this->limite} <br/>";
+            // Se não for autorizado, entra como uma excessão particular da classe
+            echo "Saque não autorizado."
+                . " | Saldo atual: {$this->saldo}"
+                . " | Limite atual: {$this->limite}"
+                . "<br/>";
         endif;
+
     }
 }
 
