@@ -23,11 +23,15 @@ h1{
     text-transform: uppercase;
 }
 
-#divPrinc{
+.divPrinc{
     box-shadow: 1px 2px 2px 1px rgba(88, 103, 129, 0.459);
     border-radius: 7px;
     padding: 20px;
     width: 500px;
-    height: 300px;
+    height: fit-content;
     background-color: rgba(165, 192, 243, 0.685);
+}
+
+.margin{
+    margin: 1%;
 }

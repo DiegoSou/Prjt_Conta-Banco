@@ -7,7 +7,7 @@ final class Poupanca extends Conta{
             parent::saque($valor);
         else :
             echo "Saque não autorizado."
-                ." | Saldo na conta: {$this->saldo}"
+                ." | Saldo na conta: " . number_format($this->saldo, 2, '.', '')
                 ."<br/>";
         endif;
     }

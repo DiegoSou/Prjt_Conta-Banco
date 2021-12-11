@@ -20,11 +20,17 @@ abstract class Conta{
 
     public function depositar($valor){
         $this->saldo += $valor;
-        echo "Depósito de: {$valor} | Saldo atual {$this->saldo} <br/>";
+        echo "Depósito de: "
+            . number_format($valor, 2, '.', '') . " reais. | "
+            . "Saldo atual: " 
+            . number_format($this->saldo, 2, '.', '') . " <br/> ";
     }
 
     public function saque($valor){
         $this->saldo -= $valor;
-        echo "Saque de {$valor} reais. | Saldo atual: {$this->saldo} <br/>";
+        echo "Saque de "
+            . number_format($valor, 2, '.', '') . " reais. | "
+            . "Saldo atual: "
+            . number_format($this->saldo, 2, '.', '') . " <br/> ";
     }
 }
