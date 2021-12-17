@@ -50,7 +50,7 @@
 
                 }
                 else{
-                    header("Location: signIn.php");
+                    header("Location: logIn.php");
                 }
             }else{
                 header("Location: index.php");
