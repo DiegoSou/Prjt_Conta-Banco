@@ -17,18 +17,18 @@
 
         <form action="main.php" method="post" id="form">
             <label for="idAgencia">Agência: </label>
-            <input type="text" name="idAgencia" id="idAgencia" class="inputForm" value="<?=isset($_COOKIE['agencia']) ? $_COOKIE['agencia'] : '';?>">
+            <input type="text" name="idAgencia" id="idAgencia" class="inputForm" value="<?=isset($_COOKIE["agencia"]) ? $_COOKIE["agencia"] : '';?>">
             <br>
             <label for="idConta">Conta: </label>
-            <input type="text" name="idConta" id="idConta" class="inputForm" value="<?=isset($_COOKIE['conta']) ? $_COOKIE['conta'] : '';?>">
+            <input type="text" name="idConta" id="idConta" class="inputForm" value="<?=isset($_COOKIE["conta"]) ? $_COOKIE["conta"] : '';?>">
             <br>
             <label for="saldo">Saldo: </label>
-            <input type="number" step=".01" name="saldo" id="saldo" class="inputForm" value="<?=isset($_COOKIE['saldo']) ? $_COOKIE['saldo'] : '';?>">
+            <input type="number" step=".01" name="saldo" id="saldo" class="inputForm" value="<?=isset($_COOKIE["saldo"]) ? $_COOKIE["saldo"] : '';?>">
             <br>
             <label for="tipoConta">Tipo da Conta</label>
-            <select name="tipoConta" id="tipoConta" class="inputForm" value="<?=isset($_COOKIE['tipo']) ? $_COOKIE['tipo'] : '';?>">
+            <select name="tipoConta" id="tipoConta" class="inputForm" value="<?=isset($_COOKIE["tipo"]) ? $_COOKIE["tipo"] : '';?>">
                 <option value="Corrente" selected>Corrente</option>
-                <option value="Poupança">Poupança</option>
+                <option value="Poupanca">Poupança</option>
             </select>
             <br>
             <input type="checkbox" name="remember" id="remember" class="margin">
@@ -38,6 +38,7 @@
             <input type="submit" class="btn btn-light margin" value="Enviar Dados da Conta">
         </form>
     </div>
+
 
     <script>
         document.getElementById("form").onsubmit = function(e){

@@ -13,36 +13,49 @@
 <body>
     <div class="divPrinc margin">
         <?php
-            require_once '../entities/Cookie.php';
-            require_once '../entities/Corrente.php';
-            require_once '../entities/Poupanca.php';
-        
-            $idAgencia = isset($_POST['idAgencia']) ? $_POST['idAgencia'] : null;
-            $idConta = isset($_POST['idConta']) ? $_POST['idConta'] : null;
-            $saldo = isset($_POST['saldo']) ? $_POST['saldo'] : null;
-            $tipoConta = isset($_POST['tipoConta']) ? $_POST['tipoConta'] : null;
+        require_once '../entities/Cookie.php';
+        require_once '../entities/Corrente.php';
+        require_once '../entities/Poupanca.php';
 
-            if($tipoConta == "Corrente"){
-                $limite = 500.00;
-                $conta = new Corrente($idAgencia, $idConta, $saldo, $limite);
-            }else{
-                $conta = new Poupanca($idAgencia, $idConta, $saldo);
-            }
+            if(isset($_POST['idAgencia']) == true || isset($idAgencia)){
+                session_start();
+                $idAgencia = isset($_POST['idAgencia']) ? $_POST['idAgencia'] : null;
+                $idConta = isset($_POST['idConta']) ? $_POST['idConta'] : null;
+                $saldo = isset($_POST['saldo']) ? $_POST['saldo'] : null;
+                $tipoConta = isset($_POST['tipoConta']) ? $_POST['tipoConta'] : null;
 
-            if(isset($_POST['remember'])){
+                if($tipoConta == "Corrente"){
+                    $limite = 500.00;
+                    $conta = new Corrente($idAgencia, $idConta, $saldo, $limite);
+                }else{
+                    $conta = new Poupanca($idAgencia, $idConta, $saldo);
+                }
+
                 addCookie("agencia", $idAgencia);
                 addCookie("conta", $idConta);
                 addCookie("saldo", $saldo);
                 addCookie("tipo", $tipoConta);
+
+
+                if($_SESSION['logIn'] == true){
+                    if(!isset($_POST['remember'])){
+                        forget("agencia", $idAgencia);
+                        forget("conta", $idConta);
+                        forget("saldo", $saldo);
+                        forget("tipo", $tipoConta);
+                    }
+        
+                    echo $conta->getDetalhes();
+                    echo $tipoConta."<br/>";
+
+                }
+                else{
+                    header("Location: signIn.php");
+                }
             }else{
-                forget("agencia", $idAgencia);
-                forget("conta", $idConta);
-                forget("saldo", $saldo);
-                forget("tipo", $tipoConta);
+                header("Location: index.php");
             }
 
-            echo $conta->getDetalhes();
-            echo $tipoConta."<br/>";
         ?>
     </div>
 </body>

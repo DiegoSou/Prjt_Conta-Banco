@@ -1,6 +1,6 @@
 <?php
 function addCookie($nome, $valor){
-    $validade = strtotime("+1 month");
+    $validade = strtotime("1+ month");
     setcookie($nome, $valor, $validade, "", "", false, true);
 }
 
